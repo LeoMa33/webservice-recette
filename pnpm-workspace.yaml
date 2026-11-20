@@ -9,4 +9,5 @@ engineStrict: true
 # Dependencies allowed to run their install scripts
 allowBuilds:
   # Version check only
+  '@scarf/scarf': false
   protobufjs: false

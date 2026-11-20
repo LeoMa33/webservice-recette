@@ -20,6 +20,7 @@ import { USER_CLIENT } from '../common/grpc.js';
 import { LoginDto, RegisterDto } from './auth.dto.js';
 import { type AuthenticatedRequest } from './auth.guard.js';
 import { Public } from './public.decorator.js';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller()
 export class AuthController implements OnModuleInit {
@@ -36,6 +37,8 @@ export class AuthController implements OnModuleInit {
   }
 
   /** Read from the token itself: no call to the user service */
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  @ApiBearerAuth()
   @Get('me')
   me(@Req() request: AuthenticatedRequest): User {
     return request.user;
